@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { useState } from "react";
+import Forms from "./components/Forms";
+import StepTwo from "./components/StepTwo";
 function App() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [visible, setVisible] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <p>Simple Form</p>
       </header>
-    </div>
+      <main>
+        {visible === false ? (
+          <Forms
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            confirmPassword={confirmPassword}
+            setConfirmPassword={setConfirmPassword}
+            visible={visible}
+            setVisible={setVisible}
+          />
+        ) : (
+          ""
+        )}
+        {visible === true ? (
+          <StepTwo
+            name={name}
+            email={email}
+            password={password}
+            visible={visible}
+            setVisible={setVisible}
+          />
+        ) : (
+          ""
+        )}
+      </main>
+      <footer>
+        <p>Made at le Reacteur by Thiru - 2022</p>
+      </footer>
+    </>
   );
 }
 
