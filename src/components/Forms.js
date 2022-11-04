@@ -43,7 +43,9 @@ const Forms = ({
     if (password === confirmPassword) setVisible(true);
   };
   const [eye, setEye] = useState(hidden);
+  const [eye1, setEye1] = useState(hidden);
   const [type, setType] = useState("password");
+
   const handleClick = () => {
     if (type === "password") {
       setType("text");
@@ -51,6 +53,15 @@ const Forms = ({
     } else {
       setType("password");
       setEye(hidden);
+    }
+  };
+  const handleClick1 = () => {
+    if (type === "password") {
+      setType("text");
+      setEye1(show);
+    } else {
+      setType("password");
+      setEye1(hidden);
     }
   };
 
@@ -92,7 +103,7 @@ const Forms = ({
           </Form.Group>
           <Form.Group className="mb-3 relative" controlId="confirmPassword">
             <Form.Label>Confirm your Password</Form.Label>
-            <img className="logo" src={eye} alt="" onClick={handleClick} />
+            <img className="logo" src={eye1} alt="" onClick={handleClick1} />
             <Form.Control
               type={type}
               value={confirmPassword}
